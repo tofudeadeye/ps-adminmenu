@@ -1,15 +1,21 @@
 <script lang="ts">
 	import { ACTION } from '@store/actions'
-	import { ITEM_DATA, VEHICLE_DATA, JOB_DATA, GANG_DATA, LOCATION_DATA, PED_LIST } from '@store/data'
+	import {
+		ITEM_DATA,
+		VEHICLE_DATA,
+		JOB_DATA,
+		GANG_DATA,
+		LOCATION_DATA,
+		PED_LIST,
+	} from '@store/data'
 	import { PLAYER, PLAYER_DATA } from '@store/players'
 	import { RESOURCE, RESOURCES, COMMANDS } from '@store/server'
-	import { VEHICLE_DEV } from '@store/vehicle_dev'
+	import { VEHICLE_DEV, VEHICLE_PROPS } from '@store/vehicle_dev'
 	import { TOGGLE_COORDS } from '@store/togglecoords'
-	import { Message, Messages } from "@store/staffchat";
+	import { Message, Messages } from '@store/staffchat'
 	import { ReceiveNUI } from '@utils/ReceiveNUI'
 	import { debugData } from '@utils/debugData'
 	import { ENTITY_INFO } from '@store/entityInfo'
-
 
 	debugData([
 		{
@@ -21,7 +27,7 @@
 	debugData([
 		{
 			action: 'setBrowserMode',
-			data: true
+			data: true,
 		},
 	])
 
@@ -34,6 +40,10 @@
 
 	ReceiveNUI('setResourceData', (data: any) => {
 		$RESOURCE = data
+	})
+
+	ReceiveNUI('setActionData', (data: any) => {
+		$ACTION = data
 	})
 
 	ReceiveNUI('setPlayersData', (data: any) => {
@@ -53,6 +63,10 @@
 		$VEHICLE_DEV = data
 	})
 
+	ReceiveNUI('setVehicleProps', (data: any) => {
+		$VEHICLE_PROPS = data
+	})
+
 	ReceiveNUI('showCoordsMenu', (data: any) => {
 		$TOGGLE_COORDS = data
 	})
@@ -63,6 +77,5 @@
 	ReceiveNUI('setMessages', (data: any) => {
 		Message.set(data)
 		Messages.set($Message[0])
-	});
-
+	})
 </script>

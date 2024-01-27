@@ -4,11 +4,12 @@
 	import { SendNUI } from '@utils/SendNUI'
 
 	let navigation = [
-		{ value: 'Staffchat', icon: 'fas fa-message' },
+		{ value: 'Staffchat', icon: 'fas fa-message', text: 'Staff Chat' },
 		{ value: 'Players', icon: 'fas fa-users' },
 		{ value: 'Server', icon: 'fas fa-server' },
 		{ value: 'Commands', icon: 'fas fa-slash' },
 		{ value: 'Actions', icon: 'fas fa-wand-magic-sparkles' },
+		{ value: 'Bennys', icon: 'fas fa-car', text: "Benny's" },
 	]
 </script>
 
@@ -29,7 +30,7 @@
 	</div>
 
 	{#each navigation as nav}
-		<Button tooltiptext={nav.value} icon={nav.icon} value={nav.value} />
+		<Button tooltiptext={nav.text || nav.value} icon={nav.icon} value={nav.value} />
 	{/each}
 
 	<button
